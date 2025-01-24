@@ -186,4 +186,11 @@ exports.logIn = async(req,res)=>{
 }
 
 //changePassword
+exports.changePassword = async(req,res) => {
+    try{
+    
+    }catch(err){
+
+    }
+}
 
