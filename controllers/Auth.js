@@ -3,6 +3,7 @@ const OTP = require('../models/OTP');
 const otpgen = require("otp-generator")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+require("dotenv").config()
 
 //sendOTP
 exports.SendOtp = async(req,res)=>{
@@ -188,7 +189,7 @@ exports.logIn = async(req,res)=>{
 //changePassword
 exports.changePassword = async(req,res) => {
     try{
-    
+
     }catch(err){
 
     }
