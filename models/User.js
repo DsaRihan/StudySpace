@@ -46,6 +46,12 @@ const userSchema = new mongoose.Schema({
             ref:"CourseProgress",
         }
     ],
+    token:{
+        type:String,
+    },
+    expirationToken:{
+        type:String,
+    },
 
 });
 
