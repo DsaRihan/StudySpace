@@ -38,9 +38,58 @@ exports.getAuth = async (req,res,next)=>{
 }
 
 //isStudent
-
+exports.isStudent = async (req, res, next) => {
+    try{
+        if(req.user.accountType !== "Student"){
+            res.status(403).json({
+                success: false,
+                message: "Invalid account type Student"
+            });
+        }
+        next();
+    }
+    catch(err){
+        res.status(403).json({
+            success: false,
+            message: "Role could not be verified"
+        });
+    }
+}
 
 //isInstructor
-
+exports.isInstructor = async (req, res, next) => {
+    try{
+        if(req.user.accountType !== "Instructor"){
+            res.status(403).json({
+                success: false,
+                message: "Invalid account type Instructor"
+            });
+        }
+        next();
+    }
+    catch(err){
+        res.status(403).json({
+            success: false,
+            message: "Role could not be verified"
+        });
+    }
+}
 
 //isAdmin
+exports.isAdmin = async (req, res, next) => {
+    try{
+        if(req.user.accountType !== "Admin"){
+            res.status(403).json({
+                success: false,
+                message: "Invalid account type Admin"
+            });
+        }
+        next();
+    }
+    catch(err){
+        res.status(403).json({
+            success: false,
+            message: "Role could not be verified"
+        });
+    }
+}
