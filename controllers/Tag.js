@@ -23,3 +23,21 @@ exports.createTag = async(req,res) => {
         })
     }
 }
+
+// get all tags
+exports.getallTags = async(req,res) => {
+    try{
+        const gettags = await Tag.find({})
+        res.status(200).json({
+            success: true,
+            message: "tags found successfully",
+            gettags
+        });
+    }
+    catch(err){
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+}
