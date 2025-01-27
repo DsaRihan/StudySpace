@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
         type:String,
     },
     expirationToken:{
-        type:String,
+        type:Date,
     },
 
 });
