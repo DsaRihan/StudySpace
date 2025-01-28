@@ -32,3 +32,31 @@ exports.createSection = async (req, res) => {
         })
     }
 }
+
+// update section
+exports.updatedCourse = async (req, res) => {
+    try{
+        // fetch the data
+        const {sectionName, sectionId } = req.body
+        // validate
+        if(!sectionName || !courseId){
+            return res.status(404).json({
+                success: false,
+                message:"Missing required fields"
+            })
+        }
+        // update the data
+        const section =  await Section.findByIdAndUpdate(sectionId,{sectionName},{new:true});
+        // response
+        return res.status(200).json({
+            success:true,
+            message:" updated the course"
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            success:false,
+            message:"Error in updating the course"
+        })
+    }
+}
