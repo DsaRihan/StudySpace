@@ -70,3 +70,24 @@ exports.createCourse = async (req,res )=>{
         })
     }
 }
+
+// get all courses
+exports.showallCourses = async (req, res) => {
+    try{
+        const show = await Course.find({},{courseName:true, price:true, instructor:true, studentsEnrolled:true,
+                                            ratingAndReviews:true, thumbnail:true
+        }).populate("instructor").exec();
+
+        return res.status(200).json({
+            success:true,
+            message: 'Data found successfully',
+            data: show
+        })
+    }
+    catch(e){
+        return res.status(400).json({
+            success:false,
+            message: 'Failed to get all courses'
+        })
+    }
+}
