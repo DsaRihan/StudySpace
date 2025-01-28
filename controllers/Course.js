@@ -45,8 +45,28 @@ exports.createCourse = async (req,res )=>{
             courseName, courseDescription, instructor : instructordetails._id, whatYouWillLearn,
             price, tag : tagdetails._id, thumbnail : thumbnailimage.secure_url
         })
+        // add new course to the user schema
+        await User.findByIdAndUpdate(
+            {_id:instructordetails._id},
+            {
+                $push:{
+                    courses:newCourse._id
+                }
+            },
+            {new:true}
+        )
+        // update the tag schema
+
+        // return response
+        return res.status(200).json({
+            success:true,
+            message: 'Course created successfully'
+        })
     }
     catch(e){
-
+        return res.status(400).json({
+            success:false,
+            message: 'Failed to create course'
+        })
     }
 }
